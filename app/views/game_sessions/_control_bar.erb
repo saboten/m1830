@@ -1,0 +1,20 @@
+<ul id="control_bar">
+  <li id="control_buttons">
+    <a href="#" class="control_button" id="private_income_button">Pay Private Income</a><!--
+    --><a href="#" class="control_button" id="final_scores_button">Final Scores</a><!--
+    --><a href="#" class="control_button" id="undo_button">Undo</a><!--
+    --><%= link_to "Main Menu", root_path, class: "control_button", id: "menu_button" %>
+  </li>
+  <li id="bank"><%= number_to_currency(@game.bank_remaining, precision: 0)%></li>
+  <li id="command_line_item">
+    <%= image_tag 'green-check.png',
+        class: "response_image",
+        id: "success_image",
+        style: "display: none;"%>
+    <%= image_tag 'red-x.png',
+        class: "response_image",
+        id: "error_image",
+        style: "display: none;"%>
+    <%= text_field_tag "command"%>
+  </li>
+</ul>

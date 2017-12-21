@@ -1,0 +1,113 @@
+@import "mixins";
+
+ul#corporation_list {
+  text-align: center;
+  height: 95%;
+}
+li.corporation_block {
+  position: relative;
+  display: inline-block;
+  width: 19%;
+  height: 45%;
+  text-align: center;
+  margin-bottom: 15px;
+  margin-right: 4px;
+  margin-left: 4px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+  background-color: rgba(0,0,0,0.2);
+  color: #FFF;
+  vertical-align: top;
+  @include rounded_bottom;
+}
+li.corporation_block .shaded{
+  opacity: 0.4;
+}
+li.corporation_block .content_block {
+  cursor: pointer;
+}
+li.corporation_block .final_score_block {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+  z-index: 10;
+}
+li.corporation_block .corporation_initials {
+  font-size: 2em;
+  padding: 5px;
+  text-shadow: 2px 2px 1px rgb(0, 0, 0);
+}
+li.corporation_block .corporation_divider {
+  height: 3px;
+  margin-top: 3px;
+}
+li.corporation_block .corporation_money {
+  font-size: 3em;
+}
+li.corporation_block .shares_list {
+  margin-top: 10px;
+  text-align: center;
+  color: #FFF;
+}
+li.corporation_block .share_block {
+  display: inline-block;
+  width: 40%;
+  padding: 4px;
+  margin-bottom: 5px;
+  margin-right: 3px;
+  margin-left: 3px;
+  @include embossed_box_base;
+}
+.transaction_block {
+  position: absolute;
+  width: 19%;
+  text-align: center;
+  color: #FFF;
+  @include rounded-bottom;
+}
+.transaction_block a {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #FFF;
+  margin-top: 10px;
+  &:hover {opacity: 0.9;;}
+}
+.transaction_title {
+  font-size: 2em;
+  padding: 5px;
+  text-shadow: 2px 2px 1px rgb(0, 0, 0);
+  cursor: pointer;
+}
+.transaction_block th {
+  font-size: 1.25em;
+  text-shadow: 1px 1px 3px rgb(0, 0, 0);
+  font-weight: normal;
+}
+input.transaction_input {
+  width: 90%;
+  text-align: center;
+  font-size: 2em;
+}
+a.transaction_button {
+  @include dark_round_button;
+}
+a.transaction_button_left {
+  @include dark_round_button_left;
+}
+a.transaction_button_right {
+  @include dark_round_button_right;
+}
+a#buy_button {
+  font-size: 1.5em;
+}
+a#sell_button {
+  font-size: 1.5em;
+}
+a#withhold_button {
+  font-size: 1.2em;
+}
+a#pay_button {
+  font-size: 1.2em;
+}

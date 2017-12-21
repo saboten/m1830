@@ -1,0 +1,67 @@
+@import "mixins";
+
+table#private_companies {
+  color: #FFF;
+  border: 1px solid #FFF;
+  padding: 5px;
+  width: 30%;
+  float: left;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+table#private_companies th {
+  text-align: left;
+  text-decoration: underline;
+}
+table#private_companies td.company_name {
+  cursor: pointer;
+}
+td.selected_company {
+  background-color: #FFF;
+  color: #000;
+}
+div#console_output {
+  background-color: #FFF;
+  width: 67%;
+  height: 125px;
+  float: right;
+  margin-right: 10px;
+  padding: 5px;
+  overflow: auto;
+  @include inset_input;
+}
+div#company_controls {
+  float: left;
+  margin-top: 5px;
+  margin-left: 15px;
+}
+div#company_controls a {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #FFF;
+  vertical-align: top;
+}
+div#company_controls label {
+  color: #FFF;
+  font-size: 1.25em; 
+}
+//TODO Figure out why font-size is capped out
+select#new_company_owner {
+  vertical-align: top;
+  font-size: 1.5em;
+  margin-right: 15px;
+}
+input#company_value {
+  padding: 5px;
+  font-size: 1.5em;
+  vertical-align: top;
+  width: 100px;
+  text-align: center;
+  margin-right: 15px;
+}
+a#sell_company_button {
+  @include dark_round_button_left;
+}
+a#remove_company_button {
+  @include dark_round_button_right;
+}

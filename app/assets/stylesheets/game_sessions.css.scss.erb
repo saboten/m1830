@@ -1,0 +1,94 @@
+@import "mixins", "player-list", "corporation-list";
+
+@mixin popup_box {
+    background-image: url(<%= asset_path 'bg.png' %>);
+    box-shadow: 3px 3px 3px #222;
+    border: 1px solid #000;
+}
+
+$top_row_size: 20%;
+
+.selected {
+  border: 2px solid #FFF;
+  border-top: 8px solid #FFF;
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+input {
+  @include inset_input;
+}
+p.flash_notice {
+  margin: 0px;
+  color: #FFF;
+}
+p.flash_error {
+  margin: 0px;
+  color: #F00;
+}
+
+//Page Layout
+div#top_row {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    height: $top_row_size;
+    box-shadow: 0px 5px 4px #111;  
+}
+div#center_row {
+    position: fixed;
+    top: $top_row_size;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: rgba(30,30,30,0.7);
+    overflow: auto;
+}
+
+//Control Bar
+ul#control_bar {
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+ul#control_bar a {
+  display: inline-block;
+  padding: 5px 10px;
+  color: #AAA;
+  &:hover {color: #fff;}
+}
+ul#control_bar a#private_income_button {
+  @include dark_round_button_left;
+}
+ul#control_bar a#final_scores_button {
+  @include dark_round_button_center;
+}
+ul#control_bar a#undo_button {
+  @include dark_round_button_center;
+}
+ul#control_bar a#menu_button {
+  @include dark_round_button_right;
+}
+ul#control_bar li {
+  display: inline-block;
+  width: 40%;
+  color: #fff;
+  vertical-align: middle;
+}
+ul#control_bar li#bank {
+  width: 19%;
+  font-size: 2.5em;
+  @include default_text_shadow;
+}
+img.response_image {
+  position: absolute;
+  top: 12px;
+  margin-left: -30px;
+}
+input#command {
+  width: 95%;
+  font-size: 1.5em;
+  padding: 5px;
+}

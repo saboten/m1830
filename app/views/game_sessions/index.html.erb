@@ -1,0 +1,18 @@
+<div id="manager_index_body">
+	<div id="manager_index_banner">
+		18XX Game Manager
+	</div>
+	<ul id="banner_button_row">
+		<li><%= link_to "New Game", new_game_session_path, :id => "new_game_button", :class => "banner_button" %></li>
+    <li><%= link_to "Help", help_path, :id => "help_button", :class => "banner_button" %></li>
+    <li><%= link_to "Settings", settings_path, :id => "settings_button", :class => "banner_button" %></li>
+	</ul>
+	<%- flash.each do |name, msg| -%>
+  	<%= content_tag :div, msg, :id => "flash_#{name}", :class => "flash_messages" %>
+  <%- end -%>
+
+  <div id="saved_games_title" class="section_title">Previous Games</div>
+  <div id="saved_games" class="section_content">
+  	<%= render :partial => "game_list"%>
+  </div>
+</div>

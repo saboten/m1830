@@ -1,0 +1,80 @@
+@import "mixins";
+@mixin popup_box {
+    background-image: url(<%= asset_path 'bg.png' %>);
+    box-shadow: 3px 3px 3px #222;
+    border: 1px solid #000;
+}
+form.edit_form {
+	margin-left: auto;
+	margin-right: auto;
+	width: 86%;
+}
+form.edit_form table {
+  margin-top: 10px;
+  width: 100%;
+}
+form.edit_form table.player_input_table th {
+  color: #FFF;
+  font-size: 1.2em;
+}
+form.edit_form table.player_input_table td {
+  padding-bottom: 5px;
+  text-align: center;
+}
+form.edit_form ul.optional_list {
+    text-align: right;
+    padding: 5px;
+    padding-right: 15%;
+}
+form.edit_form table.company_owner_table {
+    color: #FFF;
+}
+form.edit_form h2 {
+  color: #FFF;
+  text-align: center;
+  margin-bottom: 5px;
+}
+form.edit_form label {
+    color: #CCC;
+    margin-right: 5px;
+}
+form.edit_form label.bank_label {
+  color: #FFF;
+  font-size: 1.5em;
+}
+form.edit_form td.centered_cell {
+  text-align: center;
+}
+form.edit_form input.dark_input {
+    font-size: 1.5em;
+    padding: 5px;
+    @include inset_input;
+}
+form.edit_form input.dark_centered_input {
+    font-size: 1.5em;
+    padding: 5px;
+    text-align: center;
+    @include inset_input;
+}
+form.edit_form input.company_price_input {
+  font-size: 1.25em;
+  text-align: center;
+  padding: 3px;
+}
+form.edit_form select.company_owner_select {
+  font-size: 1.25em;
+}
+input#save_button {
+    width: 100%;
+}
+div#error_explanation {
+    margin-bottom: 20px;
+    margin-top: 10px;
+    color: #FFF;
+    text-align: center;
+    border: 1px dotted #FFF;
+    padding: 10px;
+}
+div#error_explanation h2 {
+    margin-top: 0px;
+}

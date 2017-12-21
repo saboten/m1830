@@ -1,0 +1,88 @@
+@import "mixins";
+
+$player_1_light: #222;
+$player_1_dark: #000;
+$player_2_light: #226;
+$player_2_dark: #113;
+$player_3_light: #622;
+$player_3_dark: #311;
+$player_4_light: #262;
+$player_4_dark: #131;
+$player_5_light: #662;
+$player_5_dark: #331;
+$player_6_light: #626;
+$player_6_dark: #313;
+
+ul#player_list {
+  text-align: center;
+}
+ul#player_list .player_selected {
+  border: 2px solid #FFF;
+}
+li.player_block {
+  position: relative;
+  display: inline-block;
+  width: 15%;
+  padding-bottom: 10%;
+  margin-right: 5px;
+  margin-left: 5px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #FFF;
+  vertical-align: text-top;
+  @include embossed_box_bottom;
+}
+.player_1_color_light {
+  background-color: $player_1_light;
+}
+.player_2_color_light {
+  background-color: $player_2_light;
+}
+.player_3_color_light {
+  background-color: $player_3_light;
+}
+.player_4_color_light {
+  background-color: $player_4_light;
+}
+.player_5_color_light {
+  background-color: $player_5_light;
+}
+.player_6_color_light {
+  background-color: $player_6_light;
+}
+li.player_block .player_block_content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
+}
+li.player_block .player_name {
+  padding: 5px;
+  margin-left: 1px;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.6);
+}
+.player_1_color_dark {
+  background-color: $player_1_dark;
+}
+.player_2_color_dark {
+  background-color: $player_2_dark;
+}
+.player_3_color_dark {
+  background-color: $player_3_dark;
+}
+.player_4_color_dark {
+  background-color: $player_4_dark;
+}
+.player_5_color_dark {
+  background-color: $player_5_dark;
+}
+.player_6_color_dark {
+  background-color: $player_6_dark;
+}
+li.player_block .player_money {
+  padding: 10px;
+  font-size: 2.5em;
+  @include default_text_shadow;
+}

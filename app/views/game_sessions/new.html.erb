@@ -1,0 +1,95 @@
+<div id="manager_index_body">
+	<div id="manager_index_banner">
+		New Game
+	</div>
+  <%= form_for @game, html: {class: "edit_form"} do |f|%>
+    <% if @game.errors.any? %>
+    	<div id="error_explanation">
+      		<h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being created</h2>
+      	<ul>
+      		<% @game.errors.full_messages.each do |msg| %>
+        		<li><%= msg %></li>
+      		<% end %>
+      	</ul>
+    	</div>
+  	<% end %>
+    <table class="player_input_table">
+      <tr>
+        <td rowspan="2">
+          <table>
+            <tr>
+              <th>Name</th>
+              <th>Money</th>
+            </tr>
+            <% for i in 1..6 do %>
+          		<%= f.fields_for(:players, @new_player) do |p| %>
+                <tr>
+                  <td><%= p.text_field :name, class: "dark_input player_name_input", placeholder: "Player #{i}", tabindex: i%></td>
+                  <td><%= p.text_field :money, 
+                                       class: "dark_centered_input player_money_input", 
+                                       data: {player: ""}, 
+                                       size: 4 %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          </table>
+        </td>
+        <td>
+          <h2 id="optional_companies">Optional Companies</h1>
+          <ul class="optional_list">
+            <% GameSession.companies.each do |key, value| %>
+              <% if value["core"] == false %>
+              <li>
+                <%= label(:game_session, :company, value["name"].html_safe, value: key) %>
+                <%= check_box("company", key, class: "company_checkbox", data: {initials: key}) %>
+              </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h2 id="optional_corporations">Optional Corporations</h1>
+          <ul class="optional_list">
+            <li>
+              <%= label(:game_session, :corporation, "Norfolk & Western".html_safe, value: "nw") %>
+              <%= check_box("corporation", "nw") %>
+            </li>
+            <li>
+              <%= label(:game_session, :corporation, "Pere Marquette".html_safe, value: "pmq") %>
+              <%= check_box("corporation", "pmq") %>
+            </li>
+            <li>
+              <%= label(:game_session, :corporation, "Nickel Plate".html_safe, value: "nkp") %>
+              <%= check_box("corporation", "nkp") %>
+            </li>
+            <li>
+              <%= label(:game_session, :corporation, "Reading".html_safe, value: "rdr") %>
+              <%= check_box("corporation", "rdr") %>
+            </li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="centered_cell">
+          <%= f.label(:bank, class: "bank_label") %> <%= f.text_field :bank, size: 10, class:"dark_centered_input", value: "12000" %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="centered_cell">
+          <table class="company_owner_table">
+            <% GameSession.companies.each do |key, value| %>
+              <%= content_tag(:tr, id: "company_row_#{key}", class: "company_owner_list_item", hidden: (value["core"] == false)) do %>
+                <td><%= value["name"].html_safe %><td>
+                <td><%= select_tag("company_owner[#{key}]", options_for_select([["Player 1", 0],["Player 2", 1], ["Player 3", 2],["Player 4", 3],["Player 5", 4], ["Player 6", 5]]), class: "company_owner_select", data: {price: 0}) %></td>
+                <td><%= text_field(:company_input, :price, class: "company_price_input", data: {initials: key}) %></td>
+              <% end %>
+            <% end %>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <%= f.submit "Save", id: "save_button", class:"dark_input"%>
+  <% end %>
+</div>

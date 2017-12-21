@@ -1,0 +1,25 @@
+<%= content_tag "ul", 
+    :id => "player_list" do
+%>
+  <% i = 1 %>
+  <% @game.players.each do |player|%>
+   <% money_class = @money_change.key?(player) ? "player_money money_change" : "player_money" %>
+    <%= content_tag "li", 
+        class: "player_block player_#{i}_color_light", 
+        id: "player_#{player.id}",
+        data: {id: player.id} do%>
+      <div class="player_block_content">
+        <%= content_tag("div", 
+          player.name, 
+          class: "player_name player_#{i}_color_dark",
+          id: "player_name_#{player.id}")%>
+        <%= content_tag("div", 
+          number_to_currency(player.money, precision: 0), 
+          class: money_class,
+          id: "player_money_#{player.id}",
+          data: @money_change[player])%>
+      </div>
+    <% i += 1%>    
+    <% end %>
+  <% end %>
+<% end %>

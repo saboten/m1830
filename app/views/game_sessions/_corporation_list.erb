@@ -1,0 +1,59 @@
+<%= content_tag "ul", 
+    :id => "corporation_list" do %>
+  <% @game.corporations.sort {|x,y| x.initials <=> y.initials}.each do |corporation|%>
+  <% content_block_class = corporation.floated? ? "content_block" : "content_block shaded" %>
+  <% money_class = @money_change.key?(corporation) ? "corporation_money money_change" : "corporation_money" %>
+    <%= content_tag "li", 
+      class: "corporation_block" do%>
+      <%= content_tag "div",
+          class: "transaction_block final_score_block",
+          id: "transaction_block_#{corporation.id}",
+          style: "display: none; background-color: #{corporation.css_color('color-primary')};",
+          data: {id: corporation.id} do%>
+        <%= content_tag "div",
+            corporation.print_initials,
+            class: "transaction_title",
+            id: "transaction_title_#{corporation.id}"%>
+        <%= content_tag "table",
+            "",
+            class: "transaction_controls",
+            id: "transaction_controls_#{corporation.id}"%>
+      <% end %>
+      <%= content_tag "div",
+          class: content_block_class,
+          id: "content_block_#{corporation.id}",
+          data: {id: corporation.id} do%>
+        <%= content_tag("div", 
+          corporation.print_initials, 
+          class: "corporation_initials",
+          id: "corporation_initials_#{corporation.id}",
+          style: "background-color: #{corporation.css_color('color-primary')};")%>
+        <%= content_tag("div",
+          "",
+          class: "corporation_divider",
+          style: "background-color: #{corporation.css_color('color-primary')};")%>
+        <%= content_tag("div", 
+          number_to_currency(corporation.money, precision: 0), 
+          class: money_class,
+          data: @money_change[corporation])%>
+        <%= content_tag("div", 
+          "Income: #{number_to_currency(corporation.income, precision: 0)}", 
+          class: "corporation_income",
+          id: "corporation_income_#{corporation.id}",
+          data: {income: corporation.income})%>
+        <%= content_tag "ul",
+          class: "shares_list",
+          id: "shares_list_#{corporation.id}" do%>
+          <% corporation.shares.sort {|x,y| y.quantity <=> x.quantity}.each do |s|%>
+          <% if s.quantity > 0 %>
+            <%= content_tag "li",
+              s.owner_string,
+              class: "share_block",
+              style: "background-color: #{s.css_color}"%>
+          <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

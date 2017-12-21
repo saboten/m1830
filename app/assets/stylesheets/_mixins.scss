@@ -1,0 +1,99 @@
+$radius: 5px;
+
+@mixin rounded_top_left {
+  $vert: top;
+  $horz: left;
+
+  border-#{$vert}-#{$horz}-radius: $radius;
+  -moz-border-radius-#{$vert}#{$horz}: $radius;
+  -webkit-border-#{$vert}-#{$horz}-radius: $radius;
+}
+@mixin rounded_bottom_left {
+  $vert: bottom;
+  $horz: left;
+
+  border-#{$vert}-#{$horz}-radius: $radius;
+  -moz-border-radius-#{$vert}#{$horz}: $radius;
+  -webkit-border-#{$vert}-#{$horz}-radius: $radius;
+}
+@mixin rounded_bottom_right {
+  $vert: bottom;
+  $horz: right;
+
+  border-#{$vert}-#{$horz}-radius: $radius;
+  -moz-border-radius-#{$vert}#{$horz}: $radius;
+  -webkit-border-#{$vert}-#{$horz}-radius: $radius;
+}
+@mixin rounded_top_right {
+  $vert: top;
+  $horz: right;
+
+  border-#{$vert}-#{$horz}-radius: $radius;
+  -moz-border-radius-#{$vert}#{$horz}: $radius;
+  -webkit-border-#{$vert}-#{$horz}-radius: $radius;
+}
+@mixin rounded_top {
+  @include rounded_top_left;
+  @include rounded_top_right;
+}
+@mixin rounded_bottom {
+  @include rounded_bottom_left;
+  @include rounded_bottom_right;
+}
+@mixin rounded_right {
+  @include rounded_bottom_right;
+  @include rounded_top_right;
+}
+@mixin rounded_left {
+  @include rounded_bottom_left;
+  @include rounded_top_left;
+}
+@mixin rounded {
+  @include rounded_bottom_left;
+  @include rounded_bottom_right;
+  @include rounded_top_left;
+  @include rounded_top_right;
+}
+@mixin embossed_box_base {
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.2), 1px 1px 0px rgba(0, 0, 0, 0.6);
+}
+@mixin button_properties {
+  @include embossed_box_base;
+  background-color: rgba(30,30,30,0.7);
+  text-align: center;
+  text-decoration: none;
+}
+@mixin dark_round_button_center {
+  @include button_properties;
+}
+@mixin dark_round_button_left {
+  @include rounded_left;
+  @include button_properties;
+}
+@mixin dark_round_button_right {
+  @include rounded_right;
+  @include button_properties;
+}
+@mixin dark_round_button {
+  @include rounded;
+  @include button_properties;
+}
+@mixin embossed_box {
+  @include rounded;
+  @include embossed_box_base;
+}
+@mixin embossed_box_bottom {
+  @include rounded_bottom;
+  @include embossed_box_base;
+}
+@mixin inset_input {
+  background: rgba(0, 0, 0, 0.2);
+  color: #FFF;
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+@mixin default_text_shadow {
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.6);
+}

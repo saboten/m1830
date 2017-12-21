@@ -1,0 +1,12 @@
+<% if @games.empty? %>
+	No Games
+<% else %>
+	<ul class="game_list">
+		<% @games.each do |g| %>
+			<li>
+			  <%= link_to g.created_at.strftime("%m/%d/%Y"), game_session_path(id: g.id), class: "game_link" %>
+				<%= link_to "-", g, data: { confirm: 'Are you sure?' }, method: :delete, class: "delete_link" %>
+			</li>
+		<% end %>
+	</ul>
+<% end %>

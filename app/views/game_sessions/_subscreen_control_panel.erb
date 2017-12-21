@@ -1,0 +1,42 @@
+<div id="subscreen_control_panel">
+  <table id="private_companies">
+    <tr>
+      <th>Company</th>
+      <th class="company_owner">Owner</th>
+    </tr>
+    <% @game.companies.each_key do |initials| %>
+    <tr>
+      <%= content_tag "td",
+          GameSession.company_name(initials),
+          class: "company_name",
+          id: "company_name_#{initials}",
+          data: {initials: initials}%>
+      <%= content_tag "td",
+          @game.company_owner_name(initials),
+          class: "company_owner"%>
+    </tr>
+    <% end %>
+  </table>
+  <%= content_tag "div",
+     id: "console_output",
+     data: {error: !flash[:error].nil?} do%>
+    <% if flash[:notice] %>
+      <%= content_tag "p",
+      flash[:notice].html_safe,
+      class: "flash_notice" %>
+    <% end %>
+    <% if flash[:error] %>
+      <%= content_tag "p",
+      flash[:error].html_safe,
+      class: "flash_error" %>
+    <% end %>
+  <% end %>
+  <div id="company_controls">
+    <label>New Owner:</label>
+    <%= select_tag "new_company_owner", options_for_select(@game.corporations.map {|c| [c.name,c.id]}.sort) %>
+    <label>Price:</label>
+    <%= text_field_tag "company_value" %>
+    <a href="#" id="sell_company_button">Sell Company</a><!--
+    --><a href="#" id="remove_company_button">Remove Company</a>
+  </div>
+</div>
